@@ -1,0 +1,37 @@
+{
+  "name": "neutralinojs-builder",
+  "version": "1.0.0",
+  "description": "A standalone Neutralinojs CLI plugin for packaging and installer generation",
+  "main": "index.js",
+  "bin": {
+    "neu-builder": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neutralinojs-community/neutralinojs-builder"
+  },
+  "keywords": [
+    "neutralinojs",
+    "neutralino",
+    "builder",
+    "installer",
+    "nsis",
+    "deb",
+    "appimage"
+  ],
+  "author": {
+    "name": "Neutralinojs and contributors",
+    "email": "neutralinojs@gmail.com",
+    "url": "https://neutralino.js.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neutralinojs-community/neutralinojs-builder/issues"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
