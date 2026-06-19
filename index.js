@@ -9,6 +9,8 @@ const passedFlags = separatorIndex !== -1 ? args.slice(0, separatorIndex) : args
 const neuBuildFlags = separatorIndex !== -1 ? args.slice(separatorIndex + 1) : [];
 const target = passedFlags.find(arg => !arg.startsWith('-'));
 
+logger.info("Configuration loaded.");
+logger.info(config);
 logger.info("Neutralinojs Builder initialized.");
 
 if (!target) {

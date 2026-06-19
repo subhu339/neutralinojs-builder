@@ -1,6 +1,36 @@
 const assert = require("assert");
+
 const resolveConfig =
     require("../lib/configresolver");
+
+function validateTarget(
+    target,
+    arch,
+    platform
+) {
+
+    const config =
+        resolveConfig([
+            target,
+            `--${arch}`
+        ]);
+
+    assert.equal(
+        config.target,
+        target
+    );
+
+    assert.equal(
+        config.arch,
+        arch
+    );
+
+    assert.equal(
+        config.targetPlatform,
+        platform
+    );
+
+}
 
 describe(
     "Config Resolver",
@@ -8,7 +38,6 @@ describe(
         it(
             "should detect host and target platforms separately",
             () => {
-
                 const config =
                     resolveConfig([
                         "nsis",
@@ -23,85 +52,90 @@ describe(
                 );
             }
         );
-        it(
-            "should resolve nsis target arch x64",
+        describe(
+            "NSIS",
             () => {
+                it(
+                    "should resolve x64",
+                    () => {
 
-                const config =
-                    resolveConfig([
-                        "nsis",
-                        "--x64"
-                    ]);
-
-                assert.equal(
-                    config.target,
-                    "nsis"
+                        validateTarget("nsis", "x64", "windows");
+                    }
                 );
-
-                assert.equal(
-                    config.arch,
-                    "x64"
+                it(
+                    "should resolve ia32",
+                    () => {
+                        validateTarget("nsis", "ia32", "windows");
+                    }
                 );
-
-                assert.equal(
-                    config.targetPlatform,
-                    "windows"
-                );
-
             }
         );
-
-        it(
-            "should resolve appimage target arch x64",
+        describe(
+            "DEB",
             () => {
-
-                const config =
-                    resolveConfig([
-                        "appimage",
-                        "--x64"
-                    ]);
-
-                assert.equal(
-                    config.target,
-                    "appimage"
+                it(
+                    "should resolve x64",
+                    () => {
+                        validateTarget("deb", "x64", "linux");
+                    }
                 );
-
-                assert.equal(
-                    config.arch,
-                    "x64"
+                it(
+                    "should resolve ia32",
+                    () => {
+                        validateTarget("deb", "ia32", "linux");
+                    }
                 );
+                it(
+                    "should resolve armhf",
+                    () => {
+                        validateTarget("deb", "armhf", "linux");
 
-                assert.equal(
-                    config.targetPlatform,
-                    "linux"
+                    }
                 );
-
             }
         );
-
-        it(
-            "should resolve dmg target arch x64",
+        describe(
+            "AppImage",
             () => {
+                it(
+                    "should resolve x64",
+                    () => {
+                        validateTarget("appimage", "x64", "linux");
 
-                const config =
-                    resolveConfig([
-                        "dmg",
-                        "--x64"
-                    ]);
-
-                assert.equal(
-                    config.target,
-                    "dmg"
+                    }
                 );
-
-                assert.equal(
-                    config.arch,
-                    "x64"
+                it(
+                    "should resolve arm64",
+                    () => {
+                        validateTarget("appimage", "arm64", "linux");
+                    }
                 );
+            }
+        );
+        describe(
+            "DMG",
+            () => {
+                it(
+                    "should resolve x64",
+                    () => {
 
-                assert.equal(
-                    config.targetPlatform,
-                    "mac"
+                        validateTarget("dmg", "x64", "mac");
+
+                    }
+                );
+                it(
+                    "should resolve arm64",
+                    () => {
+
+                        validateTarget("dmg", "arm64", "mac");
+                    }
+                );
+                it(
+                    "should resolve universal",
+                    () => {
+                        validateTarget("dmg", "universal", "mac");
+
+                    }
                 );
 
             }

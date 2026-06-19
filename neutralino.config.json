@@ -1,5 +1,6 @@
 {
   "applicationId": "com.example.myapp",
+  "applicationName": "My First Builder App",
   "version": "1.0.0",
   "defaultMode": "window",
 
@@ -13,11 +14,11 @@
               "x64",
               "ia32"
             ],
-            "icon": "/installerassets/windows/nsis/app.ico",
-            "sidebarImage": "/installerassets/windows/nsis/sidebar.bmp",
-            "headerImage": "/installerassets/windows/nsis/header.bmp",
-            "license": "/installerassets/LICENSE.txt",
-            "output": "/dist/windows"
+            "icon": "./installerassets/windows/nsis/app.ico",
+            "sidebarImage": "./installerassets/windows/nsis/sidebar.bmp",
+            "headerImage": "./installerassets/windows/nsis/header.bmp",
+            "license": "./installerassets/LICENSE.txt",
+            "output": "./dist/windows"
           }
         ]
       },
@@ -30,10 +31,10 @@
               "ia32",
               "armhf"
             ],
-            "icon": "/installerassets/linux/deb/app.png",
-            "desktopEntry": "/installerassets/linux/deb/myapp.desktop",
+            "icon": "./installerassets/linux/deb/app.png",
             "category": "Utility",
-            "output": "/dist/linux"
+            "output": "./dist/linux",
+            "maintainer": "GSoC"
           },
           {
             "target": "appimage",
@@ -41,10 +42,10 @@
               "x64",
               "arm64"
             ],
-            "icon": "/installerassets/linux/appimage/app.png",
-            "desktopEntry": "/installerassets/linux/appimage/myapp.desktop",
-            "license": "/installerassets/LICENSE.txt",
-            "output": "/dist/linux"
+            "icon": "./installerassets/linux/appimage/app.png",
+            "license": "./installerassets/LICENSE.txt",
+            "output": "./dist/linux",
+            "maintainer": "GSoC"
           }
         ]
       },
@@ -57,9 +58,9 @@
               "arm64",
               "universal"
             ],
-            "icon": "/installerassets/mac/dmg/app.icns",
-            "background": "/installerassets/mac/dmg/dmg-background.png",
-            "output": "/dist/mac"
+            "icon": "./installerassets/mac/dmg/app.icns",
+            "background": "./installerassets/mac/dmg/dmg-background.png",
+            "output": "./dist/mac"
           }
         ]
       }
